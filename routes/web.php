@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -11,4 +12,4 @@
 |
 */
 
-Route::view('/', 'index');
+Route::get('/', HomeController::class);

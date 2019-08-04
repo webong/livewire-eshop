@@ -8,7 +8,7 @@ class ItemSeeder extends Seeder
     public $items = [
         [
             'name' => 'Khaki Suede Polish Work Boots',
-            'price' => 149.99,
+            'price' => 3400,
             'category' => 'women',
             'sale' => true,
             'article' => 'shoe',
@@ -16,7 +16,7 @@ class ItemSeeder extends Seeder
         ],
         [
             'name' => 'Camo Fang Backpack Jungle',
-            'price' => 39.99,
+            'price' => 6300,
             'category' => 'women',
             'sale' => false,
             'article' => 'jacket',
@@ -24,7 +24,7 @@ class ItemSeeder extends Seeder
         ],
         [
             'name' => 'Parka and Quilted Liner Jacket',
-            'price' => 49.99,
+            'price' => 9500,
             'category' => 'men',
             'sale' => true,
             'article' => 'jacket',
@@ -32,7 +32,7 @@ class ItemSeeder extends Seeder
         ],
         [
             'name' => 'Cotton Black Cap',
-            'price' => 12.99,
+            'price' => 2500,
             'category' => 'men',
             'sale' => true,
             'article' => 'hats',
@@ -40,7 +40,7 @@ class ItemSeeder extends Seeder
         ],
         [
             'name' => 'Knit Sweater with Zips',
-            'price' => 29.99,
+            'price' => 5600,
             'category' => 'women',
             'sale' => false,
             'article' => 'sweater',
@@ -48,7 +48,7 @@ class ItemSeeder extends Seeder
         ],
         [
             'name' => 'Long Linen-blend Shirt',
-            'price' => 18.99,
+            'price' => 7200,
             'category' => 'men',
             'sale' => false,
             'article' => 'shirt',
@@ -56,7 +56,7 @@ class ItemSeeder extends Seeder
         ],
         [
             'name' => 'Knit Orange Sweater',
-            'price' => 28.99,
+            'price' => 6200,
             'category' => 'men',
             'sale' => false,
             'article' => 'sweater',
@@ -64,7 +64,7 @@ class ItemSeeder extends Seeder
         ],
         [
             'name' => 'Cotton Band-collar Blouse',
-            'price' => 49.99,
+            'price' => 3400,
             'category' => 'men',
             'sale' => false,
             'article' => 'shirt',
@@ -72,7 +72,7 @@ class ItemSeeder extends Seeder
         ],
         [
             'name' => 'Camo Fang Backpack Jungle',
-            'price' => 59.99,
+            'price' => 4400,
             'category' => 'women',
             'sale' => true,
             'article' => 'jacket',
@@ -80,7 +80,7 @@ class ItemSeeder extends Seeder
         ],
         [
             'name' => 'Golden Pilot Jacket',
-            'price' => 129.99,
+            'price' => 9700,
             'category' => 'women',
             'sale' => false,
             'article' => 'jacket',
@@ -88,7 +88,7 @@ class ItemSeeder extends Seeder
         ],
         [
             'name' => 'Spotted Patterned Sweater',
-            'price' => 80.99,
+            'price' => 8900,
             'category' => 'women',
             'sale' => false,
             'article' => 'jacket',
@@ -96,7 +96,7 @@ class ItemSeeder extends Seeder
         ],
         [
             'name' => 'Double Knit Sweater',
-            'price' => 59.99,
+            'price' => 5900,
             'category' => 'men',
             'sale' => true,
             'article' => 'jacket',

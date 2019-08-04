@@ -7,6 +7,11 @@ class Item extends Component
 {
     public $item;
 
+    public function mount($item)
+    {
+        $this->item = $item;   
+    }
+
     public function addItem()
     {
 

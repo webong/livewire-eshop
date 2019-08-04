@@ -1,7 +1,9 @@
 <div class="item">
-    <p>Khaki Suede Polish Work Boots</p>
-    <span class="salepill">Sale</span>
-    <img src="/shoe1.png" alt="Image of Khaki Suede Polish Work Boots">
-    <p>$149.99</p>
-    <button class="add">Add Item</button>
+    <p>{{ $item->name }}</p>
+    @if($item->sale)
+        <span class="salepill">Sale</span>
+    @endif
+    <img src="{{url($item->img)}}" alt="Image of {{$item->name}}">
+    <p>₦{{$item->price}}</p>
+    <button wire:click="addItem" class="add">Add Item</button>
 </div>

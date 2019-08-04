@@ -3,7 +3,7 @@
         <label for="pricerange">Highest Price:
             <span> ₦{{ $pricerange ?? 7000 }}</span>
         </label>
-        <input wire:model.debounce.1000ms="pricerange" id="pricerange" type="range" min="{{ $min }}" max="{{ $max }}"
+        <input wire:model.debounce.500ms="pricerange" id="pricerange" type="range" min="{{ $min }}" max="{{ $max }}"
             step="500" value="7000" class="slider">
             <span class="min">₦0</span>
             <span class="max">₦400</span>
