@@ -16,5 +16,7 @@
 </head>
 <body>
     @yield('content')
+
+    @livewireAssets
 </body>
 </html>
