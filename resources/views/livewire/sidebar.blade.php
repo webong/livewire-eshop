@@ -1,17 +1,17 @@
 <aside>
     <div class="sidearea">
         <label for="pricerange">Highest Price:
-            <span>$300</span>
+            <span> ₦{{ $pricerange ?? 7000 }}</span>
         </label>
-        <input id="pricerange" type="range" min="0" max="400"
-            step="0.1" value="300" class="slider">
-            <span class="min">$0</span>
-            <span class="max">$400</span>
+        <input wire:model.debounce.1000ms="pricerange" id="pricerange" type="range" min="{{ $min }}" max="{{ $max }}"
+            step="500" value="7000" class="slider">
+            <span class="min">₦0</span>
+            <span class="max">₦400</span>
         </div>
     <div class="sidearea">
         <h4>Only Show Sale Items</h4>
         <div class="can-toggle demo-rebrand-2">
-            <input id="e" type="checkbox">
+            <input wire:click="$toggle('sale')" id="e" type="checkbox">
             <label for="e">
                 <div data-checked="Yes" data-unchecked="No" class="can-toggle__switch"></div>
             </label>

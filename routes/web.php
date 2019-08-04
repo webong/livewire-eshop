@@ -11,4 +11,4 @@
 |
 */
 
-Route::view('/', 'store');
+Route::view('/', 'index');

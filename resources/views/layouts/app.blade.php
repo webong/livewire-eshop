@@ -15,7 +15,23 @@
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 </head>
 <body>
-    @yield('content')
+    <div>
+        <div class="wrapper">
+            <nav>
+                @include('layouts.partials.nav')
+            </nav>
+            <main class="capsule">
+                @include('inc.masthead')
+                <div class="contain">
+                    @yield('content')
+                </div>
+            </main>
+    
+            <div class="clear"></div>
+            <div class="push"></div>
+        </div>
+        @include('layouts.partials.footer')
+    </div>
 
     @livewireAssets
 </body>
