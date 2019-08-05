@@ -43,6 +43,7 @@ p {
 }
 
 button[class*=add],
+button[class*=remove],
 input[type=button],
 input[type=reset],
 input[type=submit] {
@@ -60,6 +61,7 @@ input[type=submit] {
 }
 
 button[class*=add]::-moz-focus-inner,
+button[class*=remove]::-moz-focus-inner,
 input::-moz-focus-inner {
     border: 0;
     padding: 0
@@ -83,6 +85,29 @@ button[class*=add] {
 
 button[class*=add]:hover {
     background: #3e64ea;
+    color: #fff;
+    -webkit-transition: all .2s ease-in;
+    transition: all .2s ease-in
+}
+
+button[class*=remove] {
+    padding: 10px 30px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 1000px;
+    cursor: pointer;
+    background: #fff;
+    color: rgb(226, 19, 19);
+    border: 1px solid rgb(223, 66, 66);
+    font-family: Barlow, sans-serif;
+    text-transform: uppercase;
+    margin: 10px;
+    -webkit-transition: all .15s ease-out;
+    transition: all .15s ease-out
+}
+
+button[class*=remove]:hover {
+    background: rgb(223, 66, 66);
     color: #fff;
     -webkit-transition: all .2s ease-in;
     transition: all .2s ease-in

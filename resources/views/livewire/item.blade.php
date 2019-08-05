@@ -5,5 +5,9 @@
     @endif
     <img src="{{url($item->img)}}" alt="Image of {{$item->name}}">
     <p>₦{{$item->price}}</p>
-    <button wire:click="addItem" class="add">Add Item</button>
+    @isset($rowId)
+        <button wire:click="$emit('removeItem', '{{ $item }}')" class="remove">Remove Item</button>
+    @else
+        <button wire:click="$emit('addItem', '{{ $item }}')" class="add">Add Item</button>
+    @endisset
 </div>
