@@ -2,6 +2,5 @@
 
 @section('content')
     @livewire('sidebar')
-
     @livewire('store')
 @endsection

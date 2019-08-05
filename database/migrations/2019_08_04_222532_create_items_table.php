@@ -18,8 +18,8 @@ class CreateItemsTable extends Migration
             $table->string('name');
             $table->string('category');
             $table->string('article');
-            $table->boolean('sale')->default(false);
             $table->float('price');
+            $table->boolean('sale')->default(false);
             $table->string('img');
             $table->timestamps();
         });

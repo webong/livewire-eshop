@@ -5,8 +5,8 @@
         </label>
         <input wire:model.debounce.500ms="pricerange" id="pricerange" type="range" min="{{ $min }}" max="{{ $max }}"
             step="500" value="7000" class="slider">
-            <span class="min">₦0</span>
-            <span class="max">₦400</span>
+            <span class="min">₦{{ $min }}</span>
+            <span class="max">₦{{ $max }}</span>
         </div>
     <div class="sidearea">
         <h4>Only Show Sale Items</h4>

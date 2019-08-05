@@ -13,13 +13,13 @@ class Sidebar extends Component
 
     public $sale = false;
 
-    public function updatingSale($sale)
+    public function updated()
     {
-        $this->emit('filterSale', $sale);
+        $this->emit('filterItems', (float) $this->min, (float) $this->pricerange, $this->sale);
     }
 
     public function render()
-    {
+    {        
         return view('livewire.sidebar');
     }
 }
