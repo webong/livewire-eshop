@@ -228,15 +228,18 @@ class Cart
      * @param string $thousandSeperator
      * @return float
      */
-    public function subtotal($decimals = null, $decimalPoint = null, $thousandSeperator = null)
+    public function subtotal($format = true, $decimals = null, $decimalPoint = null, $thousandSeperator = null)
     {
         $content = $this->getContent();
         $subTotal = $content->reduce(function ($subTotal, CartItem $cartItem) {
             return $subTotal + ($cartItem->qty * $cartItem->price);
         }, 0);
-        return $this->numberFormat($subTotal, $decimals, $decimalPoint, $thousandSeperator);
+        if ($format) {
+            return $this->numberFormat($subTotal, $decimals, $decimalPoint, $thousandSeperator);
+        }
+        return $subTotal;
     }
-
+   
         /**
      * Search the cart content for a cart item matching the given search closure.
      *

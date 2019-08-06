@@ -50,6 +50,7 @@ class Cart extends Component
         $this->cartItems = app('cart')->content();
         $this->cartCount = $this->cartItems->count();
         $this->cartTotal = app('cart')->subtotal();
+        $this->emit('setTotalAmount', app('cart')->subtotal(false).'00');
     }
 
     public function render()

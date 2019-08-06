@@ -34,5 +34,30 @@
     </div>
 
     @livewireAssets
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+    <script>
+        var cartTotal;
+        window.onload = function () {
+            window.livewire.on('setTotalAmount', total => {
+                cartTotal = Number(total);  
+            });
+        }
+        function payWithPaystack(){
+            var handler = PaystackPop.setup({
+                key: 'pk_test_019f989c38db78b17c68b4eae893db05646a077c',
+                email: 'customer@email.com',
+                amount: cartTotal,
+                currency: "NGN",
+                ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+                callback: function(response){
+                    alert('success. transaction ref is ' + response.reference);
+                },
+                onClose: function(){
+                    alert('window closed');
+                }
+            });
+            handler.openIframe();
+        }
+      </script>
 </body>
 </html>

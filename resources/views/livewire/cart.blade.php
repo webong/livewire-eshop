@@ -15,7 +15,7 @@
             <!-- Head -->
             <div class="header">
               Total: ₦{{ $cartTotal }}
-              <button class="checkout">Checkout</button>
+              <button onclick="payWithPaystack()" class="checkout">Checkout</button>
             </div>
           
             <!-- Product #1 -->
