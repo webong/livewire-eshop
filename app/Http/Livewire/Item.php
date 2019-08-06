@@ -1,7 +1,8 @@
 <?php
 namespace App\Http\Livewire;
 
-use App\Cart;
+use App\Cart as ShoppingCart;
+use App\Item as ShopItem;
 use Livewire\Component;
 
 class Item extends Component
@@ -11,31 +12,55 @@ class Item extends Component
     public $rowId;
 
     protected $listeners = [
-        'onAddItem'    =>  'itemAdded',
-        'onRemoveItem' =>  'itemRemoved',
+        'itemRemoved' => 'removeRowId', 
     ];
-
-    public function mount($item)
+    
+    public function mount(ShopItem $item)
     {
-        $this->item = $item;   
-    }
-
-    public function itemAdded($itemId, $rowId)
-    {
-        if($itemId == $this->item->id)
-        {
-            $this->rowId = $rowId;
+        $this->item = $item;
+        $cartItem = app('cart')->search(function ($cartItem) use ($item) {
+            return $cartItem->id === $item->id;
+        })->first();  
+        if (isset($cartItem)) {
+            $this->rowId = $cartItem->rowId;
         }
     }
 
-    public function itemRemoved($itemId)
+    public function addToCart(ShoppingCart $cart)
     {
-        if($itemId == $this->item->id)
+        $item = $this->item;
+        $cartItem = $cart->add($item['id'], $item['name'], 1, $item['price'], [
+            'img' => $item['img'],
+            'article' => $item['article'],
+            'category' => $item['category']
+        ]);
+        $this->rowId = $cartItem->rowId;
+        $this->emit("cartUpdated");
+    }
+
+    public function removeFromCart($rowId, ShoppingCart $cart)
+    {
+        $cart->remove($rowId);
+        $this->rowId = null;
+        $this->emit("cartUpdated");
+    }
+
+    public function removeRowId($rowId)
+    {
+        if(isset($this->rowId) && $this->rowId == $rowId)
         {
             $this->rowId = null;
         }
     }
-    
+
+    public function updated()
+    {
+        if(!$this->item instanceof ShopItem)
+        {
+            $this->item = new ShopItem($this->item);
+        }
+    }
+
     public function render()
     {
         return view('livewire.item');

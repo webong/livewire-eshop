@@ -16,11 +16,11 @@ class CartServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // $this->app->bind(Cart::class, function() {
-        //     $session =  $this->app->make(SessionManager::class);
-        //     $dispatcher =  $this->app->make(Dispatcher::class);
-        //     return new Cart($session, $dispatcher);
-        //  });
+        $this->app->bind('cart', function() {
+            $session =  $this->app->make(SessionManager::class);
+            $dispatcher =  $this->app->make(Dispatcher::class);
+            return new Cart($session, $dispatcher);
+         });
     }
 
     /**

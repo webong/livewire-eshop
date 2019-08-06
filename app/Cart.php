@@ -8,6 +8,7 @@
 
 namespace App;
 
+use Closure;
 use Illuminate\Support\Collection;
 use Illuminate\Session\SessionManager;
 use Illuminate\Contracts\Events\Dispatcher;
@@ -236,6 +237,36 @@ class Cart
         return $this->numberFormat($subTotal, $decimals, $decimalPoint, $thousandSeperator);
     }
 
+        /**
+     * Search the cart content for a cart item matching the given search closure.
+     *
+     * @param \Closure $search
+     * @return \Illuminate\Support\Collection
+     */
+    public function search(Closure $search)
+    {
+        $content = $this->getContent();
+        return $content->filter($search);
+    }
+    /**
+     * Associate the cart item with the given rowId with the given model.
+     *
+     * @param string $rowId
+     * @param mixed  $model
+     * @return void
+     */
+    public function associate($rowId, $model)
+    {
+        if(is_string($model) && ! class_exists($model)) {
+            throw new UnknownModelException("The supplied model {$model} does not exist.");
+        }
+        $cartItem = $this->get($rowId);
+        $cartItem->associate($model);
+        $content = $this->getContent();
+        $content->put($cartItem->rowId, $cartItem);
+        $this->session->put($this->instance, $content);
+    }
+
     /**
      * Magic method to make accessing the total, tax and subtotal properties possible.
      *
@@ -300,5 +331,28 @@ class Cart
     {
         if (!is_array($item)) return false;
         return is_array(head($item)) || head($item) instanceof Buyable;
+    }
+
+    /**
+     * Get the Formated number
+     *
+     * @param $value
+     * @param $decimals
+     * @param $decimalPoint
+     * @param $thousandSeperator
+     * @return string
+     */
+    private function numberFormat($value, $decimals, $decimalPoint, $thousandSeperator)
+    {
+        if(is_null($decimals)){
+            $decimals = is_null(config('cart.format.decimals')) ? 2 : config('cart.format.decimals');
+        }
+        if(is_null($decimalPoint)){
+            $decimalPoint = is_null(config('cart.format.decimal_point')) ? '.' : config('cart.format.decimal_point');
+        }
+        if(is_null($thousandSeperator)){
+            $thousandSeperator = is_null(config('cart.format.thousand_seperator')) ? ',' : config('cart.format.thousand_seperator');
+        }
+        return number_format($value, $decimals, $decimalPoint, $thousandSeperator);
     }
 }

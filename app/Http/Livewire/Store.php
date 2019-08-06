@@ -30,7 +30,6 @@ class Store extends Component
             $this->items = Item::whereBetween('price', [$min, $pricerange])
             ->get();
         }
-
     }
 
     public function render()

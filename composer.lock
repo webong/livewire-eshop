@@ -8,24 +8,24 @@
     "packages": [
         {
             "name": "calebporzio/livewire",
-            "version": "v0.1.4",
+            "version": "v0.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/calebporzio/livewire.git",
-                "reference": "16571f624d9ecd4e6191770a589a33a1db8c735a"
+                "reference": "685f19b2e3f7380605845f4b1285f54bb3af5463"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/calebporzio/livewire/zipball/16571f624d9ecd4e6191770a589a33a1db8c735a",
-                "reference": "16571f624d9ecd4e6191770a589a33a1db8c735a",
+                "url": "https://api.github.com/repos/calebporzio/livewire/zipball/685f19b2e3f7380605845f4b1285f54bb3af5463",
+                "reference": "685f19b2e3f7380605845f4b1285f54bb3af5463",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "^5.7",
-                "illuminate/validation": "^5.7"
+                "illuminate/support": "^5.7|^6.0",
+                "illuminate/validation": "^5.7|^6.0"
             },
             "require-dev": {
-                "laravel/framework": "^5.7",
+                "laravel/framework": "^5.7|^6.0",
                 "orchestra/testbench": "~3.0",
                 "phpunit/phpunit": "^7.5",
                 "psy/psysh": "@stable"
@@ -57,7 +57,7 @@
                 }
             ],
             "description": "Build and test rich client-side functionality: with only backend code.",
-            "time": "2019-08-03T18:42:55+00:00"
+            "time": "2019-08-05T14:25:46+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",

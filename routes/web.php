@@ -1,4 +1,7 @@
 <?php
+use Livewire\Component;
+use Livewire\LivewireManager;
+use Livewire\Livewire;
 
 /*
 |--------------------------------------------------------------------------

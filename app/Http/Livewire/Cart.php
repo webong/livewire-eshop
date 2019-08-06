@@ -6,38 +6,50 @@ use Livewire\Component;
 class Cart extends Component
 {
     public $cartItems;
+    public $cartCount;
     public $cartTotal;
 
     protected $listeners = [
-        'addItem' => 'add',
-        'removeItem' => 'remove',
+        'cartUpdated' => 'updated',
     ];
 
-    public function mount(ShoppingCart $cart)
+    public function mount()
     {
-        $this->cartItems = $cart->content();
+        $this->setCart();
     }
 
-    public function add($item, ShoppingCart $cart)
+    public function incrementItem($rowId, $qty, ShoppingCart $cart)
     {
-        $item = json_decode($item);
-        $cartItem = $cart->add($item->id, $item->name, 1, $item->price, [
-            'img' => $item->img,
-            'article' => $item->article,
-            'category' => $item->category
-        ]);
-        $this->emit('onAddItem', $item->id, $cartItem->rowId);
+        $qty++;
+        $cart->update($rowId, $qty);
     }
-    
-    public function remove($item, $rowId, ShoppingCart $cart)
+
+    public function decrementItem($rowId, $qty, ShoppingCart $cart)
+    {
+        $qty--;
+        $cart->update($rowId, $qty);
+        if($qty <= 0)
+        {
+            $this->emit('removeItem{$rowId}');
+        }
+    }
+
+    public function removeItem($rowId, ShoppingCart $cart)
     {
         $cart->remove($rowId);
-        $this->emit('onAddItem', $item->id);
+        $this->emit('itemRemoved', $rowId);
     }
-
+    
     public function updated()
     {
-        // $this->cartItems = $this->cart->content();
+        $this->setCart();
+    }
+
+    protected function setCart()
+    {
+        $this->cartItems = app('cart')->content();
+        $this->cartCount = $this->cartItems->count();
+        $this->cartTotal = app('cart')->subtotal();
     }
 
     public function render()
