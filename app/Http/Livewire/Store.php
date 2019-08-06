@@ -12,10 +12,26 @@ class Store extends Component
     protected $listeners = [
         'filterItems' => 'filterItems',
     ];
+    protected $category = [
+        'women', 'men', 'sale'
+    ];
 
-    public function mount()
+    public function mount($category = null)
     {
-        $this->items = Item::all();
+        switch ($category) {
+            case null:
+                $this->items = Item::all();
+                break;
+            case 'men':
+            case 'women':
+                $this->items = Item::where('category', $category);
+                break;
+            case 'sale':
+                $this->items =Item::where('sale', true)->get();
+            default:
+                return abort(404);
+                break;
+        }
     }
 
     public function filterItems(float $min, float $pricerange, bool $sale)

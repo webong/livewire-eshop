@@ -4,7 +4,7 @@
             <span> ₦{{ $pricerange ?? 7000 }}</span>
         </label>
         <input wire:model.debounce.500ms="pricerange" id="pricerange" type="range" min="{{ $min }}" max="{{ $max }}"
-            step="500" value="7000" class="slider">
+            step="500" value="{{$pricerange}}" class="slider">
             <span class="min">₦{{ $min }}</span>
             <span class="max">₦{{ $max }}</span>
         </div>

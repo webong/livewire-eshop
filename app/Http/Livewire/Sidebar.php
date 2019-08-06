@@ -9,7 +9,7 @@ class Sidebar extends Component
 
     public $max = 10000;
 
-    public $pricerange;
+    public $pricerange = 7000;
 
     public $sale = false;
 

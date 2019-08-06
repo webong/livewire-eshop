@@ -15,3 +15,5 @@ use Livewire\Livewire;
 */
 
 Route::view('/', 'index');
+
+Route::livewire('{category}', 'store');

@@ -23,6 +23,7 @@
             <main class="capsule">
                 @include('inc.masthead')
                 <div class="contain">
+                    @livewire('sidebar')
                     @yield('content')
                 </div>
             </main>
