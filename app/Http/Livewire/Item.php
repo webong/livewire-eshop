@@ -13,17 +13,12 @@ class Item extends Component
 
     protected $listeners = [
         'itemRemoved' => 'removeRowId', 
+        'cartDestroyed' => 'updated',
     ];
     
     public function mount(ShopItem $item)
     {
         $this->item = $item;
-        $cartItem = app('cart')->search(function ($cartItem) use ($item) {
-            return $cartItem->id === $item->id;
-        })->first();  
-        if (isset($cartItem)) {
-            $this->rowId = $cartItem->rowId;
-        }
     }
 
     public function addToCart(ShoppingCart $cart)
@@ -63,6 +58,16 @@ class Item extends Component
 
     public function render()
     {
+        $item = $this->item;
+        $cartItem = app('cart')->search(function ($cartItem) use ($item) {
+            return $cartItem->id === $item->id;
+        })->first();  
+        if (isset($cartItem)) {
+            $this->rowId = $cartItem->rowId;
+        } else{
+            $this->rowId = null;
+        }
+
         return view('livewire.item');
     }
 }

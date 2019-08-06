@@ -11,6 +11,7 @@ class Cart extends Component
 
     protected $listeners = [
         'cartUpdated' => 'updated',
+        'destroyCart' => 'destroy'
     ];
 
     public function mount()
@@ -30,7 +31,7 @@ class Cart extends Component
         $cart->update($rowId, $qty);
         if($qty <= 0)
         {
-            $this->emit('removeItem{$rowId}');
+            $this->emit('itemRemoved', $rowId);
         }
     }
 
@@ -38,6 +39,12 @@ class Cart extends Component
     {
         $cart->remove($rowId);
         $this->emit('itemRemoved', $rowId);
+    }
+
+    public function destroy(ShoppingCart $cart)
+    {
+        $cart->destroy();
+        $this->emit('cartDestroyed');
     }
     
     public function updated()
