@@ -16,11 +16,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        Schema::defaultStringLength(191);
-        if (App::environment('production')) {
-            URL::forceScheme('https');
-        }
-
+        //
     }
 
     /**
@@ -30,6 +26,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        if(env('REDIRECT_HTTPS'))
+        {
+            \URL::forceScheme('https');
+        }
+
+        Schema::defaultStringLength(191);
+
     }
 }
