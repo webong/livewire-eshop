@@ -6,8 +6,8 @@
     <img src="{{url($item->img)}}" alt="Image of {{$item->name}}">
     <p>₦{{$item->price}}</p>
     @isset($rowId)
-        <button wire:click="removeFromCart('{{ $rowId }}')" class="remove">Remove Item</button>
+        <button wire:click="removeFromCart('{{ $rowId }}')" wire:loading.attr="disabled" class="remove">Remove Item</button>
     @else
-        <button wire:click="addToCart('{{ $item }}')" class="add">Add Item</button>
+        <button wire:click="addToCart('{{ $item }}')" wire:loading.attr="disabled" class="add">Add Item</button>
     @endisset
 </div>
