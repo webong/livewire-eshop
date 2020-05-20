@@ -5,7 +5,7 @@ use Livewire\Component;
 
 class Sidebar extends Component
 {
-    public $min = 500;
+    public $min = 1000;
 
     public $max = 10000;
 
@@ -16,6 +16,12 @@ class Sidebar extends Component
     public function updated()
     {
         $this->emit('filterItems', (float) $this->min, (float) $this->pricerange, $this->sale);
+    }
+
+    public function toggleSale()
+    {
+        $this->sale = !$this->sale;
+        $this->updated();
     }
 
     public function render()

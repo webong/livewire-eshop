@@ -11,7 +11,7 @@
     <div class="sidearea">
         <h4>Only Show Sale Items</h4>
         <div class="can-toggle demo-rebrand-2">
-            <input wire:click="$toggle('sale')" id="e" type="checkbox">
+            <input wire:model="sale" wire:click.prefetch="toggleSale" id="e" type="checkbox">
             <label for="e">
                 <div data-checked="Yes" data-unchecked="No" class="can-toggle__switch"></div>
             </label>

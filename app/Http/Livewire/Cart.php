@@ -1,8 +1,8 @@
 <?php
 namespace App\Http\Livewire;
 
-use App\Cart as ShoppingCart;
 use Livewire\Component;
+use App\Cart as ShoppingCart;
 class Cart extends Component
 {
     public $cartItems;
@@ -14,9 +14,16 @@ class Cart extends Component
         'destroyCart' => 'destroy'
     ];
 
-    public function mount()
+    protected $casts = [
+        'cartItems' => 'collection'
+    ];
+
+    protected function setCart()
     {
-        $this->setCart();
+        $this->cartItems = app('cart')->content();
+        $this->cartCount = $this->cartItems->count();
+        $this->cartTotal = app('cart')->subtotal();
+        $this->emit('setTotalAmount', app('cart')->subtotal(false).'00');
     }
 
     public function incrementItem($rowId, $qty, ShoppingCart $cart)
@@ -52,16 +59,10 @@ class Cart extends Component
         $this->setCart();
     }
 
-    protected function setCart()
-    {
-        $this->cartItems = app('cart')->content();
-        $this->cartCount = $this->cartItems->count();
-        $this->cartTotal = app('cart')->subtotal();
-        $this->emit('setTotalAmount', app('cart')->subtotal(false).'00');
-    }
-
     public function render()
     {
+        $this->setCart();
+
         return view('livewire.cart');
     }
 }

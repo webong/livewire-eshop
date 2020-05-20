@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow:400,600|Playfair+Display:700">
     <!-- Styles -->
     <link href="/css/main.css" rel="stylesheet">
+    @livewireStyles
+
 </head>
 <body>
     <div>
@@ -23,7 +25,6 @@
             <main class="capsule">
                 @include('inc.masthead')
                 <div class="contain">
-                    @livewire('sidebar')
                     @yield('content')
                 </div>
             </main>
@@ -34,7 +35,7 @@
         @include('layouts.partials.footer')
     </div>
 
-    @livewireAssets
+    @livewireScripts
     <script src="https://js.paystack.co/v1/inline.js"></script>
     <script>
         var cartTotal;

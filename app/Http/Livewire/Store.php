@@ -40,7 +40,7 @@ class Store extends Component
     {
         $this->sale = $sale;
         $category = $this->category;
-
+        
         if($sale) {
             $this->items = Item::where('sale', $sale)
                 ->when(isset($category), function($query) use ($category) {

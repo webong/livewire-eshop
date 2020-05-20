@@ -22,7 +22,7 @@
             @foreach($cartItems as $item)
             <div class="cart-item">
                     <div class="buttons">
-                        <span wire:click="removeItem('{{ $item->rowId}}')" class="delete-btn"></span>
+                        <span wire:click="removeItem('{{ $item->rowId }}')" class="delete-btn"></span>
                         {{-- <span class="like-btn"></span> --}}
                     </div>
                 
